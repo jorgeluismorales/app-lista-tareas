@@ -1,5 +1,5 @@
-const { mostrarMenu, pausa } = require("./helpers/mensajes");
-
+//const { mostrarMenu, pausa } = require("./helpers/mensajes");
+const { menuDinamico, pausa } = require("./helpers/inquirer");
 require("colors");
 
 console.clear();
@@ -10,7 +10,7 @@ const main = async () => {
   let opt = "";
 
   do {
-    opt = await mostrarMenu();
+    opt = await menuDinamico();
     console.log({ opt });
     await pausa();
   } while (opt !== "0");
