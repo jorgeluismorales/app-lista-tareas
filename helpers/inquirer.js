@@ -56,4 +56,19 @@ const pausa = async () => {
   });
 };
 
-module.exports = { menuDinamico, pausa };
+const leerInput = async (msg) => {
+ const {desc} = await inquirer.prompt({
+  type: 'input',
+  name: 'desc',
+  message: msg,
+  validate: (value) => {
+    if (value.length === 0) {
+      return "por favor ingrese un valor";
+    }
+    return true;
+  }
+});
+return desc;
+}
+
+module.exports = { menuDinamico, pausa, leerInput };
