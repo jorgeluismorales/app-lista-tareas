@@ -1,16 +1,20 @@
 //const { mostrarMenu, pausa } = require("./helpers/mensajes");
-const guardarDB = require("./helpers/guardarArchivo");
+const {guardarDB,leerDB} = require("./helpers/guardarArchivo");
 const { menuDinamico, pausa, leerInput } = require("./helpers/inquirer");
 const Tareas = require("./models/tareas");
 require("colors");
 
-console.clear();
 
 const main = async () => {
 
   let opt = "";
   const tareas = new Tareas();
 
+  const tareasDB = leerDB();
+
+  if(tareasDB) {
+
+  }
   do {
     opt = await menuDinamico();
 
