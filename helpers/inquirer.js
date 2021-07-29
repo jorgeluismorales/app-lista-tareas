@@ -2,7 +2,6 @@ const inquirer = require("inquirer");
 require("colors");
 
 const menuDinamico = async () => {
-  console.clear();
   console.log("========================".rainbow);
   console.log("Seleccione una opcion".america);
   console.log("========================".rainbow);
