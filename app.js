@@ -13,7 +13,7 @@ const main = async () => {
   const tareasDB = leerDB();
 
   if(tareasDB) {
-
+tareas.cargarTareasFromArray(tareasDB);
   }
   do {
     opt = await menuDinamico();
@@ -24,7 +24,7 @@ const main = async () => {
         tareas.crearTarea(desc);
         break;
       case "2":
-        console.log(tareas.listadoArr);
+        tareas.listadoCompleto();
         break;
     }
 
