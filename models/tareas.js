@@ -58,6 +58,12 @@ class Tareas {
         })
     }
 
+    borrarTarea (id) {
+        if (this._listado[id]) {
+            delete this._listado[id];
+        }
+    }
+
     crearTarea(desc = '') {
         const tarea = new Tarea(desc);
         this._listado[tarea.id] = tarea;
