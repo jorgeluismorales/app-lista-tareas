@@ -58,31 +58,31 @@ const pausa = async () => {
 
 const leerInput = async (msg) => {
   const { desc } = await inquirer.prompt({
-    type: 'input',
-    name: 'desc',
+    type: "input",
+    name: "desc",
     message: msg,
     validate: (value) => {
       if (value.length === 0) {
         return "por favor ingrese un valor";
       }
       return true;
-    }
+    },
   });
   return desc;
-}
+};
 
 const listadoTareasBorrar = async (tareas = []) => {
   const options = tareas.map((tarea, i) => {
-    const indice = i + 1
+    const indice = i + 1;
     return {
       value: tarea.id,
-      name: `${indice} ${tarea.desc}`
+      name: `${indice} ${tarea.desc}`,
     };
-  })
+  });
 
   options.unshift({
     value: "0",
-    name: '0. Cancelar'
+    name: "0. Cancelar",
   });
 
   const { id } = await inquirer.prompt({
@@ -92,15 +92,41 @@ const listadoTareasBorrar = async (tareas = []) => {
     choices: options,
   });
   return id;
-}
+};
 
-const confirmar = async(mensaje) => {
+const mostrarListadoChecklist = async (tareas = []) => {
+  const options = tareas.map((tarea, i) => {
+    const indice = i + 1;
+    return {
+      value: tarea.id,
+      name: `${indice} ${tarea.desc}`,
+      checked: tarea.completadoEn ? true : false,
+    };
+  });
+
+  const { ids } = await inquirer.prompt({
+    type: "checkbox",
+    name: "ids",
+    message: "Selecciones",
+    choices: options,
+  });
+  return ids;
+};
+
+const confirmar = async (mensaje) => {
   const { ok } = await inquirer.prompt({
     type: "confirm",
     name: "ok",
     message: mensaje,
   });
   return ok;
-}
+};
 
-module.exports = { menuDinamico, pausa, leerInput, listadoTareasBorrar, confirmar };
+module.exports = {
+  menuDinamico,
+  pausa,
+  leerInput,
+  listadoTareasBorrar,
+  confirmar,
+  mostrarListadoChecklist,
+};
